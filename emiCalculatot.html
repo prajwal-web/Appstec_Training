@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EMI Calculator</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-top: 12%;
+      }
+      .result,
+      .btn {
+        margin-top: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <label for="loanAmount">loan amount</label>
+      <input type="number" id="loanAmt" placeholder="Enter loan amount" /><br />
+
+      <label for="interestRate">interest rate</label>
+      <input
+        type="number"
+        id="interestrate"
+        placeholder="Enter interest rate"
+      /><br />
+
+      <label for="loanTerm">loan term:</label>
+      <input
+        type="number"
+        id="loanterm"
+        placeholder="Enter loan term in years"
+      />
+
+      <button class="btn" onclick="calculate()">Calculate EMI</button>
+
+      <div class="result" id="result"></div>
+    </div>
+    <script>
+      function calculate() {
+        var p = +document.getElementById("loanAmt").value;
+        var rate = +document.getElementById("interestrate").value;
+        var term = +document.getElementById("loanterm").value;
+        var i = rate / 100 / 12;
+        var n = term * 12;
+        let M = (p * (i * Math.pow(1 + i, n))) / (Math.pow(1 + i, n) - 1);
+        document.getElementById("result").innerHTML = M;
+      }
+    </script>
+  </body>
+</html>
