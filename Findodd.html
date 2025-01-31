@@ -3,26 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Find Odd Number</title>
   </head>
   <body>
     <script>
-      //      Test cases
-      // console.log(findOdd([7])); // 7
-      // console.log(findOdd([0])); // 0
-      // console.log(findOdd([1, 1, 2])); // 2
-      // console.log(findOdd([0, 1, 0, 1, 0])); // 0
-      // console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1])); // 4
+      function findOdd(arr) {
+        let count = {};
 
-      let arr = [0, 1, 0, 1, 0];
-      let count = 0;
-      for (let i = 0; i < arr.length; i++) {
-        for (let j = i + 1; i < arr.length; j++) {
-          if (arr[i] === arr[j]) {
-            count++;
+        for (let num of arr) {
+          count[num] = (count[num] || 0) + 1;
+        }
+        for (let num in count) {
+          if (count[num] % 2 !== 0) {
+            return Number(num); //it return number appears odd time
           }
         }
+
+        return null;
       }
+
+      // Test cases
+      console.log(findOdd([7])); // 7
+      console.log(findOdd([0])); // 0
+      console.log(findOdd([1, 1, 2])); // 2
+      console.log(findOdd([0, 1, 0, 1, 0])); // 0
+      console.log(findOdd([1, 2, 2, 3, 3, 3, 4, 3, 3, 3, 2, 2, 1]));
+
+      let arr = [0, 1, 0, 1, 0];
+      console.log(findOdd(arr));
     </script>
   </body>
 </html>
